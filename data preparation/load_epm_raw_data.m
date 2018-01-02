@@ -2,7 +2,7 @@ function allData = load_epm_raw_data(studentIds, dataSetPath)
 	%# loads cell array with specific ids
 	%# dataSetPath - path to folder with sessions
 	
-	sessionPathTemplate = [dataSetPath '/Session x/'];
+	sessionPathTemplate = [dataSetPath '/Data/Processes/Session {x}/'];
 	sessions = 1:6;
 	
 	allData = [];
@@ -10,7 +10,7 @@ function allData = load_epm_raw_data(studentIds, dataSetPath)
 	for studentId = studentIds
 		
 		for session = sessions
-			pathToSessionFolder = strrep(sessionPathTemplate, "x",  mat2str(session));
+			pathToSessionFolder = strrep(sessionPathTemplate, "{x}",  mat2str(session));
 			pathToSessionForStudent = [pathToSessionFolder mat2str(studentId)];
 			disp(pathToSessionForStudent);
 			try
